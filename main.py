@@ -23,24 +23,36 @@ template_dict = {
 }
 
 def inference(template_dict, template):
-    x = template.substitute(CHANGE="increase|raise|make an increase to", FEATURE="loan amount", CHANGE2="decrease", FEATURE2="Salary")
+    x = template.substitute(template_dict)
     print(random_sentence(x))
     return random_sentence(x)
     
-#Your loan application {can|could|would} be successful if you {$CHANGE} your $FEATURE and {$CHANGE2} your $FEATURE2
- 
-def main():
+def main(): 
+
+# Loan application example:
+    
+    #Your loan application {can|could|would} be successful if you {$CHANGE} your $FEATURE and {$CHANGE2} your $FEATURE2
+
+    # template_dict = {
+    # "CHANGE":"increase|raise|make an increase to",
+    # "FEATURE":"loan amount",
+    # "CHANGE2":"decrease", "FEATURE2":"Salary"
+    # }
+
+# Weather forcasting example:
+
+    # The temperature for $day, {$date} in $year is predicted to be $temperature
 
     template_dict = {
-    "CHANGE":"increase|raise|make an increase to",
-    "FEATURE":"loan amount",
-    "CHANGE2":"decrease", "FEATURE2":"Salary"
+    "day":"Saturday",
+    "date":"16 Nov|16th of November",
+    "year":"2022", "temperature":"22.4 degree"
     }
+
     template = getting_template()
     x= inference(template_dict, template)
     print(x)
-    # x = t.substitute(CHANGE="inc")
-    # x = t.substitute(**template_dict)
+
 
 if __name__ == "__main__":
     main()
